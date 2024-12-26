@@ -15,12 +15,18 @@
             margin: 0;
         }
 
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
         button {
             background-color: #007BFF;
             color: white;
             border: none;
             padding: 15px 30px;
-            margin: 10px;
             font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
@@ -45,20 +51,21 @@
 </head>
 
 <body>
-    <button onclick="window.location.href='how-to-get-uid.html'">How to get your uid</button>
-    <button onclick="window.location.href='how-to-reset-password.html'">How to reset your password</button>
-    <button onclick="window.location.href='how-to-get-username.html'">How to get your username</button>
-<!--     <button onclick="window.open('https://discord.com/channels/1207828421363769364/1207860252452585472', '_blank')">Where is the tutorial video</button> -->
-    <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1282672734467395594/Rise.json?ex=66eb6a52&is=66ea18d2&hm=fd34c7c1d401a03cc3dc75548c7910e66048cd6ffda05fc8419f10c02978259b&', '_blank')">Where is the json</button>
-    <button onclick="window.location.href='What-are-the-arguments.html'">What are the arguments</button>
-    <button onclick="window.location.href='https://riseclients-organization.gitbook.io/rise-6-scripting-api/', '_blank'">Where is the scripting document</button>
-    <button onclick="window.location.href='https://vantage.rip/terms', '_blank'">Vantage Terms</button>
-    <button onclick="window.location.href='how-to-hide-opengl-error.html'">How to hide 'OpenGL Error'?</button>
-    <button onclick="window.location.href='no-sound.html'">Fix no sound in game</button>
-    <button onclick="window.location.href='https://youtu.be/KAQ5fIfZJD0?si=W3JZspVLvNLy7Bmk', '_blank'">Rise tutorial video 2023</button>
-    <button onclick="window.location.href='https://youtu.be/k_f_SDyYz1E?si=3vx0twSqE5yTYcG-', '_blank'">How to update hwid tutorial video</button>
-    <button onclick="window.location.href='https://youtu.be/ILGxM5mlzG4', '_blank'">How to use Rise with Minecraft Launcher - Video Tutorial 2024</button>
-    <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1285619503371390976/How_to_create_RiseCompressed.jar.mp4?ex=6764e0b7&is=67638f37&hm=0d6eac919494233a48a3e37633c85b55dad3de03123c624f5e05dba4e6b93aac&', '_blank')">How to create Rise.jar</button>
+    <div class="button-container">
+        <button onclick="window.location.href='how-to-get-uid.html'">How to get your uid</button>
+        <button onclick="window.location.href='how-to-reset-password.html'">How to reset your password</button>
+        <button onclick="window.location.href='how-to-get-username.html'">How to get your username</button>
+        <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1282672734467395594/Rise.json?ex=66eb6a52&is=66ea18d2&hm=fd34c7c1d401a03cc3dc75548c7910e66048cd6ffda05fc8419f10c02978259b&', '_blank')">Where is the json</button>
+        <button onclick="window.location.href='What-are-the-arguments.html'">What are the arguments</button>
+        <button onclick="window.location.href='https://riseclients-organization.gitbook.io/rise-6-scripting-api/', '_blank'">Where is the scripting document</button>
+        <button onclick="window.location.href='https://vantage.rip/terms', '_blank'">Vantage Terms</button>
+        <button onclick="window.location.href='how-to-hide-opengl-error.html'">How to hide 'OpenGL Error'?</button>
+        <button onclick="window.location.href='no-sound.html'">Fix no sound in game</button>
+        <button onclick="window.location.href='https://youtu.be/KAQ5fIfZJD0?si=W3JZspVLvNLy7Bmk', '_blank'">Rise tutorial video 2023</button>
+        <button onclick="window.location.href='https://youtu.be/k_f_SDyYz1E?si=3vx0twSqE5yTYcG-', '_blank'">How to update hwid tutorial video</button>
+        <button onclick="window.location.href='https://youtu.be/ILGxM5mlzG4', '_blank'">How to use Rise with Minecraft Launcher - Video Tutorial 2024</button>
+        <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1285619503371390976/How_to_create_RiseCompressed.jar.mp4?ex=6764e0b7&is=67638f37&hm=0d6eac919494233a48a3e37633c85b55dad3de03123c624f5e05dba4e6b93aac&', '_blank')">How to create Rise.jar</button>
+    </div>
     <footer>
         Made with ❤️ by Leo
         Rise forever ❤️❤️❤️
