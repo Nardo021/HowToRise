@@ -4,6 +4,8 @@
 <head>
     <title>Rise Tutorial</title>
     <link rel="icon" href="https://vantage.rip/favicon.ico">
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +15,14 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-theme {
+            background-color: #121212;
+            color: white;
         }
 
         .button-container {
@@ -46,11 +56,49 @@
             color: #666;
             background-color: #f0f0f0;
             padding: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-theme footer {
+            background-color: #1e1e1e;
+            color: #ccc;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #000; /* 黑色图标 */
+            transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            color: #333; /* 悬停时稍深的黑色 */
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3)); /* 黑色发光效果 */
+            transform: scale(1.1); /* 轻微放大 */
+        }
+
+        body.dark-theme .theme-toggle {
+            color: #ccc; /* 深色模式下为浅灰色 */
+        }
+
+        body.dark-theme .theme-toggle:hover {
+            color: #fff; /* 深色模式下悬停时为白色 */
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* 白色发光效果 */
         }
     </style>
 </head>
 
 <body>
+    <!-- 主题切换按钮（使用 Font Awesome 图标） -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i> <!-- 默认显示月亮图标（深色模式） -->
+    </button>
+
     <div class="button-container">
         <button onclick="window.location.href='how-to-get-uid.html'">How to get your uid</button>
         <button onclick="window.location.href='how-to-reset-password.html'">How to reset your password</button>
@@ -70,6 +118,38 @@
         Made with ❤️ by Leo
         Rise forever ❤️❤️❤️
     </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            const isDarkMode = body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+            // 切换图标
+            const themeIcon = document.querySelector('.theme-toggle i');
+            if (isDarkMode) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                const themeIcon = document.querySelector('.theme-toggle i');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        // Apply saved theme on page load
+        applySavedTheme();
+    </script>
 </body>
 
 </html>
