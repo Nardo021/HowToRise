@@ -1,154 +1,192 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Rise Tutorial</title>
-    <link rel="icon" href="https://vantage.rip/favicon.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: white;
-            color: black;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <title>Rise Tutorial</title>
+  <link rel="icon" href="https://vantage.rip/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        body.dark-theme {
-            background-color: #121212;
-            color: white;
-        }
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      transition: background 0.3s ease, color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
+    body.dark-theme {
+      background: #121212;
+      color: #f5f5f7;
+    }
 
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    header {
+      margin-top: 60px;
+      text-align: center;
+    }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
 
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            background-color: #f0f0f0;
-            padding: 10px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+    section {
+      margin: 30px auto;
+      max-width: 900px;
+      width: 90%;
+    }
 
-        body.dark-theme footer {
-            background-color: #1e1e1e;
-            color: #ccc;
-        }
+    section h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #0071e3;
+    }
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: #000; /* 黑色图标 */
-            transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-        }
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
 
-        .theme-toggle:hover {
-            color: #333; /* 悬停时稍深的黑色 */
-            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3)); /* 黑色发光效果 */
-            transform: scale(1.1); /* 轻微放大 */
-        }
+    button {
+      background: #fff;
+      border: 1px solid #d2d2d7;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
 
-        body.dark-theme .theme-toggle {
-            color: #ccc; /* 深色模式下为浅灰色 */
-        }
+    button:hover {
+      background: #f0f0f3;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
 
-        body.dark-theme .theme-toggle:hover {
-            color: #fff; /* 深色模式下悬停时为白色 */
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* 白色发光效果 */
-        }
-    </style>
+    body.dark-theme button {
+      background: #1c1c1e;
+      border: 1px solid #333;
+      color: #f5f5f7;
+    }
+
+    body.dark-theme button:hover {
+      background: #2c2c2e;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #86868b;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      transition: transform 0.3s ease;
+      color: #1d1d1f;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    body.dark-theme .theme-toggle {
+      color: #f5f5f7;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- 主题切换按钮（使用 Font Awesome 图标） -->
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i> <!-- 默认显示月亮图标（深色模式） -->
-    </button>
+  <!-- 主题切换按钮 -->
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+  </button>
 
+  <header>
+    <h1>Rise Tutorial</h1>
+    <p>Helpful guides & resources</p>
+  </header>
+
+  <!-- 分类 1：账号相关 -->
+  <section>
+    <h2>Account & Access</h2>
     <div class="button-container">
-        <button onclick="window.location.href='how-to-get-uid.html'">How to get your uid</button>
-        <button onclick="window.location.href='how-to-reset-password.html'">How to reset your password</button>
-        <button onclick="window.location.href='how-to-get-username.html'">How to get your username</button>
-        <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1282672734467395594/Rise.json?ex=67787ad2&is=67772952&hm=49dbd68fd79dc838d52fb0394504a8939e8aa6fdc0df5afe66bb1c0547426288&', '_blank')">Where is the json</button>
-        <button onclick="window.location.href='What-are-the-arguments.html'">What are the arguments</button>
-        <button onclick="window.location.href='https://riseclients-organization.gitbook.io/rise-6-scripting-api/', '_blank'">Where is the scripting document</button>
-        <button onclick="window.location.href='https://vantage.rip/terms', '_blank'">Vantage Terms</button>
-        <button onclick="window.location.href='how-to-hide-opengl-error.html'">How to hide 'OpenGL Error'?</button>
-        <button onclick="window.location.href='no-sound.html'">Fix no sound in game</button>
-        <button onclick="window.location.href='https://youtu.be/jeYDms69hBo?si=fsqLiWos3jA8uTpm', '_blank'">How to reset your hwid tutorial video</button>
-        <button onclick="window.location.href='https://youtu.be/ILGxM5mlzG4', '_blank'">How to use Rise with Minecraft Launcher - Video Tutorial 2024</button>
-        <button onclick="window.open('https://discord.com/channels/1265664136730247169/1265664137309061202/1285619504243540121', '_blank')">How to create Rise.jar</button>
-        <button onclick="window.location.href('macos_arm.html', '_blank')">How to run Rise on macOS (ARM)</button>
-        <button onclick="window.location.href('macos_intel.html', '_blank')">How to run Rise on macOS (Intel)</button>
+      <button onclick="window.location.href='how-to-get-uid.html'">How to get your UID</button>
+      <button onclick="window.location.href='how-to-get-username.html'">How to get your Username</button>
+      <button onclick="window.location.href='how-to-reset-password.html'">How to reset Password</button>
+      <button onclick="window.open('https://youtu.be/jeYDms69hBo', '_blank')">HWID Reset Video</button>
     </div>
-    <footer>
-        Made with ❤️ by Leo
-        Rise forever ❤️❤️❤️
-    </footer>
+  </section>
 
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('dark-theme');
-            const isDarkMode = body.classList.contains('dark-theme');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  <!-- 分类 2：常见问题 -->
+  <section>
+    <h2>Common Issues</h2>
+    <div class="button-container">
+      <button onclick="window.location.href='how-to-hide-opengl-error.html'">Hide 'OpenGL Error'</button>
+      <button onclick="window.location.href='no-sound.html'">Fix No Sound</button>
+    </div>
+  </section>
 
-            const themeIcon = document.querySelector('.theme-toggle i');
-            if (isDarkMode) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
+  <!-- 分类 3：文档与资源 -->
+  <section>
+    <h2>Documentation & Resources</h2>
+    <div class="button-container">
+      <button onclick="window.open('https://cdn.discordapp.com/attachments/1265664137309061202/1282672734467395594/Rise.json', '_blank')">Where is the JSON</button>
+      <button onclick="window.location.href='What-are-the-arguments.html'">What are the Arguments</button>
+      <button onclick="window.open('https://riseclients-organization.gitbook.io/rise-6-scripting-api/', '_blank')">Scripting Docs</button>
+      <button onclick="window.open('https://discord.com/channels/1265664136730247169/1265664137309061202/1285619504243540121', '_blank')">Create Rise.jar</button>
+      <button onclick="window.open('https://vantage.rip/terms', '_blank')">Vantage Terms</button>
+    </div>
+  </section>
 
-        function applySavedTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-theme');
-                const themeIcon = document.querySelector('.theme-toggle i');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
-        }
+  <!-- 分类 4：系统运行 -->
+  <section>
+    <h2>Run Rise</h2>
+    <div class="button-container">
+      <button onclick="window.open('https://youtu.be/ILGxM5mlzG4', '_blank')">Rise + Minecraft Tutorial</button>
+      <button onclick="window.location.href='macos_arm.html'">Run on macOS (ARM)</button>
+      <button onclick="window.location.href='macos_intel.html'">Run on macOS (Intel)</button>
+    </div>
+  </section>
 
-        // Apply saved theme on page load
-        applySavedTheme();
-    </script>
+  <footer>
+    Made with ❤️ by Leo · Rise Forever
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark-theme');
+      const isDarkMode = body.classList.contains('dark-theme');
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      const themeIcon = document.querySelector('.theme-toggle i');
+      themeIcon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    function applySavedTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+      }
+    }
+    applySavedTheme();
+  </script>
 </body>
-
 </html>
